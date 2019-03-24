@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxh.springbootMybatis.mapper.UserMapper">
+
+	<select id="findUserInfo" resultType="com.xxh.springboot.entity.User">
+		select
+		userId,userName,password,userPhone,registerTime,userStatus,versionNO,remarks,createTime
+		from t_user;
+	</select>
+	<insert id="addUserInfo" parameterType="com.xxh.springboot.entity.User" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO t_user(userName,password,userPhone,registerTime,userStatus,versionNO,remarks,createTime)
+VALUES(#{userName},#{password},#{userPhone},#{registerTime},#{userStatus},#{versionNO},#{remarks},#{createTime})
+	</insert>
+	
+	
+
+	<delete id="delUserInfo" parameterType="java.lang.Long">
+		delete from t_user where userId = #{userId}
+
+	</delete>
+	
+	<update id="updateUser" parameterType="com.xxh.springboot.entity.User">
+		UPDATE t_user SET userName=#{userName},password=#{password},
+		userPhone=#{userPhone},userStatus=#{userStatus},versionNO=versionNO+1 where userId = #{userId};
+	</update>
+	
+	<select id="getUserByUserId" resultType="com.xxh.springboot.entity.User">
+	select userId,userName,password,userPhone,registerTime,userStatus,versionNO,remarks,createTime from t_user where userId =#{userId}
+	
+	</select>
+	
+	
+
+</mapper>

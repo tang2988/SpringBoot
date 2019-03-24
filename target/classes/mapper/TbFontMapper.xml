@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxh.springbootMybatis.mapper.TbFontMapper" >
+	<select id="findAll" resultType="com.xxh.json.Font">
+		select * from tb_font
+	</select>
+	
+	<insert id="insert" parameterType="com.xxh.json.Font">
+	
+		insert into tb_font(WoffUrl,EotUrl,FontMapping)VALUES(#{WoffUrl},#{EotUrl},#{FontMapping})
+	</insert>
+</mapper>
